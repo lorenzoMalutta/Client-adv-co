@@ -43,7 +43,7 @@ export function TableMobile({ data }: Props) {
                             <span>{item.role}</span>
                         </li>
                         <li className="flex gap-1 border-[1px] border-[#F4F4F5] p-2">
-                            <strong>E-MAIL</strong>
+                            <strong>E-MAIL:</strong>
                             <span>{item.email}</span>
                         </li>
                     </ul>
