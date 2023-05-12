@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Modal from "./modal";
-import api from "../services/api"
+// import api from "../services/api"
 import closeIcon from "../assets/x.svg";
 
 type FormModalProps = {
@@ -13,7 +13,7 @@ type FormModalProps = {
     styles?: React.CSSProperties;
 };
 
-const FormModal = ({ isOpen, onClose, apiUrl, fields, styles, title, subtitle }: FormModalProps) => {
+const FormModal = ({ isOpen, onClose, fields, styles, title, subtitle }: FormModalProps) => {
     const [formState, setFormState] = useState({});
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {

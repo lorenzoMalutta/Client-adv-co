@@ -8,7 +8,7 @@ type ModalProps = {
     styles?: React.CSSProperties;
 };
 
-const Modal = ({ children, onClose, isOpen, styles }: ModalProps) => {
+const Modal = ({ children, isOpen, styles }: ModalProps) => {
     return isOpen ? ReactDOM.createPortal(
         <div
             className="fixed  bg-[#373F463D] opacity-100 inset-0 flex "
