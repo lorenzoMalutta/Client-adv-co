@@ -25,14 +25,6 @@ pre {
   padding: 0;
 }
 
-a {
-    font-family: 'Inter', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-}
-
 ol,
 ul {
   list-style: none;
@@ -87,7 +79,7 @@ p {
 }
 
 a {
-    @apply font-normal text-sm text-[#5E666F];
+    @apply font-normal text-base text-[#5E666F];
 }
 
 td {
@@ -99,7 +91,7 @@ th {
 }
 
 input {
-  @apply  focus:outline-none focus:ring-0;
+  @apply  focus:outline-none focus:ring-0 border-[#F4F4F5] border-[1px] rounded-lg;
 }
 /* blockquote,
 
