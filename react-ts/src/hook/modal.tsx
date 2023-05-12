@@ -14,7 +14,7 @@ const Modal = ({ children, isOpen, styles }: ModalProps) => {
             className="fixed  bg-[#373F463D] opacity-100 inset-0 flex "
         >
             <div
-                className="fixed end-0  bg-white px-[42px] py-8"
+                className="fixed end-0  bg-white px-[42px] py-8 sm:w-[568px] w-screen"
                 style={styles}
                 onClick={(e) => e.stopPropagation()}
             >

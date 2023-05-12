@@ -33,7 +33,7 @@ const FormModal = ({ isOpen, onClose, fields, styles, title, subtitle }: FormMod
 
     return (
         <Modal onClose={onClose} isOpen={isOpen} styles={styles}>
-            <form className="grid h-full" onSubmit={handleSubmit}>
+            <form className="grid sm:h-full" onSubmit={handleSubmit}>
                 <div>
                     <div className="flex items-center justify-between mb-8">
                         <div className="grid gap-2">

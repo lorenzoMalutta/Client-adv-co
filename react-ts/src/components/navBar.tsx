@@ -35,7 +35,7 @@ export function NavBar() {
     }
 
     return (
-        <aside className="grid w-72 h-auto border-gray-100 border-r-[1px]">
+        <aside className="hidden sm:grid w-72 h-auto border-gray-100 border-r-[1px]">
             <div className="mt-12 pl-10 pr-24">
                 <img className="w-40" src={Logo} alt="Logo Legal Cloud" />
             </div>
