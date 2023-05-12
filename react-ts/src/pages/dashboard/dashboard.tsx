@@ -37,7 +37,7 @@ export default function Dashboard() {
     }, []);
 
     return (
-        <div className="grid gap-10 sm:ml-6 sm:mr-6 sm:mt-14 sm:w-auto w-fit ">
+        <div className="sm:grid sm:gap-10 sm:ml-6 sm:mr-6 sm:mt-14 sm:w-auto w-fit">
             <div className="sm:flex sm:justify-between sm:items-center sm:w-auto sm:p-0 grid gap-2 w-80 p-1">
                 <div className="grid gap-2 ">
                     <h1>Colabordadores</h1>
@@ -58,7 +58,7 @@ export default function Dashboard() {
                 styles={{ height: "100%" }}
             />
 
-            {windowWidth > 320 ? (
+            {windowWidth > 640 ? (
                 <Table data={data} />
             ) : (
                 <TableMobile data={data} />

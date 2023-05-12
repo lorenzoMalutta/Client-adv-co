@@ -7,15 +7,15 @@ import { Header } from "./components/header";
 
 function App() {
     return (
-        <section className="sm:flex sm:flex-col">
+        <div className="sm:flex sm:flex-col">
             <div className="sm:flex sm:flex-1 ">
                 <NavBar />
-                <div className="flex-1 mb-32">
+                <div className="flex-1 sm:mb-32 mb-3">
                     <Header />
                     <RouterProvider router={router} />
                 </div>
             </div>
-        </section>
+        </div>
     )
 }
 
