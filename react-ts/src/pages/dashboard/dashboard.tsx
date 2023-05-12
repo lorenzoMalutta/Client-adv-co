@@ -1,6 +1,4 @@
-import { useState } from "react";
-import { Header } from "../../components/header";
-import { NavBar } from "../../components/navBar";
+import { useState, useEffect } from "react";
 import { Table } from "./component/table";
 import FormModal from "../../hook/formModal";
 import { TField } from "../../types/TField";
@@ -9,9 +7,11 @@ import mailIcon from "../../assets/mail.svg";
 import briefCaseIcon from "../../assets/briefcase.svg";
 import lockIcon from "../../assets/lock.svg";
 import { data } from "../../data/fakeData"
+import { TableMobile } from "./component/tableMobile";
 
 export default function Dashboard() {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
     const openModal = () => {
         setIsModalOpen(true);
@@ -28,40 +28,41 @@ export default function Dashboard() {
         { label: "Permissão", name: "permissao", icons: lockIcon, placeHolder: "Selecione sua permissão", type: "select" },
     ];
 
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowWidth(window.innerWidth);
+        };
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
     return (
-        <section className="flex flex-col">
-            <div className="flex flex-1 ">
-                <NavBar />
-                <div className="flex-1 mb-32">
-                    <Header />
-                    <div className="grid ml-6 mr-6 mt-14 gap-10">
-                        <div className="flex justify-between items-center">
-                            <div className="grid gap-2">
-                                <h1>Colabordadores</h1>
-                                <p>Veja abaixo todos os colaboradores da sua empresa cadastrados na plataforma.</p>
-                            </div>
-                            <button onClick={() => openModal()} type="button" value="colaborador" className="bg-blue-600 h-14 w-44 rounded text-white font-semibold text-base" >
-                                Novo colaborador
-                            </button>
-                        </div>
-
-                        <FormModal
-                            title="Cadastrar novo colaborador"
-                            subtitle="Preencha os dados do novo colaborador abaixo"
-                            isOpen={isModalOpen}
-                            onClose={closeModal}
-                            apiUrl="/dashboard"
-                            fields={fields}
-                            styles={{ width: "568px", height: "100%" }}
-                        />
-
-                        <Table
-                            data={data}
-                        />
-                    </div>
+        <div className="grid gap-10 sm:ml-6 sm:mr-6 sm:mt-14 sm:w-auto w-fit ">
+            <div className="sm:flex sm:justify-between sm:items-center sm:w-auto sm:p-0 grid gap-2 w-80 p-1">
+                <div className="grid gap-2 ">
+                    <h1>Colabordadores</h1>
+                    <p>Veja abaixo todos os colaboradores da sua empresa cadastrados na plataforma.</p>
                 </div>
+                <button onClick={() => openModal()} type="button" value="colaborador" className="bg-blue-600 h-14 w-44 rounded text-white font-semibold text-base" >
+                    Novo colaborador
+                </button>
             </div>
-        </section>
+
+            <FormModal
+                title="Cadastrar novo colaborador"
+                subtitle="Preencha os dados do novo colaborador abaixo"
+                isOpen={isModalOpen}
+                onClose={closeModal}
+                apiUrl="/dashboard"
+                fields={fields}
+                styles={{ height: "100%" }}
+            />
+
+            {windowWidth > 320 ? (
+                <Table data={data} />
+            ) : (
+                <TableMobile data={data} />
+            )}
+        </div>
     )
 }
