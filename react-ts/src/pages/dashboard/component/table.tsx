@@ -36,7 +36,7 @@ export function Table({ data }: Props) {
                 <tbody>
                     {currentItems.map((item, index) => (
                         <tr className="h-16" key={index}>
-                            <td className="w-7 pl-5"><img className="rounded-full" src={item.avatar} alt="" /></td>
+                            <td className="w-7 pl-5"><img className="rounded-full" src="https://picsum.photos/seed/picsum/40/40" alt="" /></td>
                             <td>{item.name}</td>
                             <td className="text-center"><p className="bg-[#F7F7F8] w-fit rounded-2xl pt-1 pb-1 pl-3 pr-3 font-medium text-[#4A525B]">{item.permission}</p></td>
                             <td>{item.role}</td>
