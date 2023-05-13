@@ -29,7 +29,6 @@ O projeto está em desenvolvimento
 
 ## Requirements
 
-- [node](https://nodejs.org/en/download/) >= 18.x.x
 - [vite](https://vitejs.dev/) >= 3.x.x
 
 ## Teste o projeto
