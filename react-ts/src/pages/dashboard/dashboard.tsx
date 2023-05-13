@@ -45,7 +45,7 @@ export default function Dashboard() {
 
     return (
         <div className="sm:grid sm:gap-10 sm:ml-6 sm:mr-6 sm:mt-14 sm:w-auto w-fit">
-            <div className="sm:flex sm:justify-between sm:items-center sm:w-auto sm:p-0 flex gap-2 p-2 justify-center">
+            <div className="sm:flex sm:justify-between sm:items-center sm:w-auto sm:p-0 gap-2 p-2 ">
                 <div className="grid gap-2 ">
                     <h1>Colabordadores</h1>
                     <p>Veja abaixo todos os colaboradores da sua empresa cadastrados na plataforma.</p>
