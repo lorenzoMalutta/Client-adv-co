@@ -42,7 +42,9 @@ export function Table({ data }: Props) {
                             <td>{item.role}</td>
                             <td>{item.email}</td>
                             <td>
-                                <Dropdown />
+                                <Dropdown
+                                    id={item.id}
+                                />
                             </td>
                         </tr>
                     ))}

@@ -6,7 +6,6 @@ type Props = {
     data: TDataTableItem[];
 }
 
-
 export function TableMobile({ data }: Props) {
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage] = useState(3);
@@ -28,7 +27,11 @@ export function TableMobile({ data }: Props) {
                         <li className="flex justify-between items-center gap-1 border-[1px] border-[#F4F4F5] p-2">
                             <strong>NOME:</strong>
                             <span>{item.name}</span>
-                            <span className=""><Dropdown /></span>
+                            <span>
+                                <Dropdown
+                                    id={item.id}
+                                />
+                            </span>
                         </li>
                         <li className="flex gap-1 border-[1px] border-[#F4F4F5] p-2">
                             <strong>PERMISSÃO:</strong>

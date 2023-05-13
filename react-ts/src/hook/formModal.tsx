@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import Modal from "./modal";
-// import api from "../services/api"
+import api from "../services/api"
 import closeIcon from "../assets/x.svg";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 type FormModalProps = {
     title?: string;
@@ -13,26 +15,35 @@ type FormModalProps = {
     styles?: React.CSSProperties;
 };
 
-const FormModal = ({ isOpen, onClose, fields, styles, title, subtitle }: FormModalProps) => {
+const FormModal = ({ isOpen, onClose, fields, styles, apiUrl, title, subtitle }: FormModalProps) => {
     const [formState, setFormState] = useState({});
 
-    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = event.target;
         setFormState({ ...formState, [name]: value });
     };
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        console.log(formState);
-        // api.post(apiUrl, formState, {
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     }
-        // })
+        try {
+            api.post(apiUrl, formState, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                }
+            })
+            toast.success("Cadastro realizado com sucesso!");
+            setTimeout(() => {
+                window.location.reload()
+            }, 1000)
+        } catch (error) {
+            toast.error("Erro ao realizar cadastro!");
+        }
     };
 
     return (
         <Modal onClose={onClose} isOpen={isOpen} styles={styles}>
+            <ToastContainer />
             <form className="grid sm:h-full" onSubmit={handleSubmit}>
                 <div>
                     <div className="flex items-center justify-between mb-8">
@@ -55,7 +66,7 @@ const FormModal = ({ isOpen, onClose, fields, styles, title, subtitle }: FormMod
                                 {type === "select" ? (
                                     <>
                                         <img className="absolute left-0 flex items-center justify-end ml-4" src={icons} alt="ícone" />
-                                        <select className="border border-[#F4F4F5] rounded w-full h-[46px] py-2 px-12 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" >
+                                        <select name={name} onChange={handleInputChange} className="border border-[#F4F4F5] rounded w-full h-[46px] py-2 px-12 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" >
                                             <option value="" disabled selected hidden>Selecione</option>
                                             <option value="visualizador">Visualizador</option>
                                             <option value="administrador">Administrador</option>
@@ -70,6 +81,7 @@ const FormModal = ({ isOpen, onClose, fields, styles, title, subtitle }: FormMod
                                             name={name}
                                             onChange={handleInputChange}
                                             placeholder={placeHolder}
+                                            required
                                         />
                                     </>
                                 }
