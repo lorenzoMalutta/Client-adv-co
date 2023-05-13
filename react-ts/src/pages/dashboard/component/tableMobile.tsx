@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { TDataTableItem } from "../../../types"
 import { Dropdown } from "./dropdown";
+import arrowR from "../../../assets/arrowR.svg"
+import arrowL from "../../../assets/arrowL.svg"
 
 type Props = {
     data: TDataTableItem[];
@@ -19,10 +21,11 @@ export function TableMobile({ data }: Props) {
     for (let i = 1; i <= totalPages; i++) {
         pageNumbers.push(i);
     }
+
     return (
         <>
             {currentItems.map((item, index) => (
-                <div key={index} className="w-72 border-[1px] border-[#F4F4F5] m-2">
+                <div key={index} className="w-screen border-[1px] border-[#F4F4F5] p-2">
                     <ul>
                         <li className="flex justify-between items-center gap-1 border-[1px] border-[#F4F4F5] p-2">
                             <strong>NOME:</strong>
@@ -52,7 +55,17 @@ export function TableMobile({ data }: Props) {
                     </ul>
                 </div>
             ))}
+
             <div className="flex justify-center items-center">
+                <button
+                    className={`flex items-center justify-center w-10 h-9 border-[#DCDFE3] border-[1px] text-[#727A83]`}
+                    onClick={() => {
+                        setCurrentPage(currentPage - 1);
+                    }}
+                >
+                    <img src={arrowL} alt="" />
+                </button>
+
                 {pageNumbers.map((number) => (
                     <button
                         key={number}
@@ -65,6 +78,16 @@ export function TableMobile({ data }: Props) {
                         {number}
                     </button>
                 ))}
+                <button
+                    className={`flex items-center justify-center w-10 h-9 border-[#DCDFE3] border-[1px] text-[#727A83]`}
+                    onClick={() => {
+                        if (currentPage < totalPages) {
+                            setCurrentPage(currentPage + 1);
+                        }
+                    }}
+                >
+                    <img src={arrowR} alt="" />
+                </button>
             </div>
         </>
     )

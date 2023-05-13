@@ -45,12 +45,12 @@ export default function Dashboard() {
 
     return (
         <div className="sm:grid sm:gap-10 sm:ml-6 sm:mr-6 sm:mt-14 sm:w-auto w-fit">
-            <div className="sm:flex sm:justify-between sm:items-center sm:w-auto sm:p-0 grid gap-2 w-80 p-1">
+            <div className="sm:flex sm:justify-between sm:items-center sm:w-auto sm:p-0 flex gap-2 p-2 justify-center">
                 <div className="grid gap-2 ">
                     <h1>Colabordadores</h1>
                     <p>Veja abaixo todos os colaboradores da sua empresa cadastrados na plataforma.</p>
                 </div>
-                <button onClick={() => openModal()} type="button" value="colaborador" className="bg-blue-600 h-14 w-44 rounded text-white font-semibold text-base" >
+                <button onClick={() => openModal()} type="button" value="colaborador" className="bg-blue-600 h-14 w-44 rounded text-white font-semibold text-base " >
                     Novo colaborador
                 </button>
             </div>
@@ -65,7 +65,7 @@ export default function Dashboard() {
                 styles={{ height: "100%" }}
             />
 
-            {windowWidth > 640 ? (
+            {windowWidth > 768 ? (
                 <Table data={data} />
             ) : (
                 <TableMobile data={data} />

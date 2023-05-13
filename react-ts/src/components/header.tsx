@@ -19,7 +19,7 @@ export function Header() {
                 </div>
                 <div className="sm:ml-32 mt-5 mb-5 sm:flex sm:items-center relative">
                     <form action="">
-                        <input className="sm:w-96 h-12 pl-5 pr-12 focus:border-[#006B9E]" name="search" placeholder="Pesquise" type="text" />
+                        <input className="sm:w-96 w-full h-12 pl-5 pr-12 focus:border-[#006B9E]" name="search" placeholder="Pesquise" type="text" />
                         <div className="absolute right-0 top-0 h-full w-12 flex items-center justify-end mr-4">
                             <CgSearch className="text-gray-400 text-lg" />
                         </div>
